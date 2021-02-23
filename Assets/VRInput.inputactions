@@ -84,6 +84,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Hacker",
+            "id": "e69d31a3-8e45-481f-85f2-a1bb86849b6e",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "47e38709-d93d-44be-ac28-0d47cbea9866",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "1b26b52a-746d-4f51-9e0f-8284777dc588",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e0a4d9b7-0d4f-4570-869d-e6b5d2d1f80b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9d2f90d-d2c8-4d9a-9d0e-8787ded17b0a",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

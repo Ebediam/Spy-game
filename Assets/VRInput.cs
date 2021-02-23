@@ -97,6 +97,52 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Hacker"",
+            ""id"": ""e69d31a3-8e45-481f-85f2-a1bb86849b6e"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""47e38709-d93d-44be-ac28-0d47cbea9866"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1b26b52a-746d-4f51-9e0f-8284777dc588"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e0a4d9b7-0d4f-4570-869d-e6b5d2d1f80b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9d2f90d-d2c8-4d9a-9d0e-8787ded17b0a"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -107,6 +153,10 @@ public class @VRInput : IInputActionCollection, IDisposable
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
         m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // Hacker
+        m_Hacker = asset.FindActionMap("Hacker", throwIfNotFound: true);
+        m_Hacker_Click = m_Hacker.FindAction("Click", throwIfNotFound: true);
+        m_Hacker_Point = m_Hacker.FindAction("Point", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -209,11 +259,57 @@ public class @VRInput : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Hacker
+    private readonly InputActionMap m_Hacker;
+    private IHackerActions m_HackerActionsCallbackInterface;
+    private readonly InputAction m_Hacker_Click;
+    private readonly InputAction m_Hacker_Point;
+    public struct HackerActions
+    {
+        private @VRInput m_Wrapper;
+        public HackerActions(@VRInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Click => m_Wrapper.m_Hacker_Click;
+        public InputAction @Point => m_Wrapper.m_Hacker_Point;
+        public InputActionMap Get() { return m_Wrapper.m_Hacker; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HackerActions set) { return set.Get(); }
+        public void SetCallbacks(IHackerActions instance)
+        {
+            if (m_Wrapper.m_HackerActionsCallbackInterface != null)
+            {
+                @Click.started -= m_Wrapper.m_HackerActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_HackerActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_HackerActionsCallbackInterface.OnClick;
+                @Point.started -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
+                @Point.performed -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
+                @Point.canceled -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
+            }
+            m_Wrapper.m_HackerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+                @Point.started += instance.OnPoint;
+                @Point.performed += instance.OnPoint;
+                @Point.canceled += instance.OnPoint;
+            }
+        }
+    }
+    public HackerActions @Hacker => new HackerActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IHackerActions
+    {
+        void OnClick(InputAction.CallbackContext context);
+        void OnPoint(InputAction.CallbackContext context);
     }
 }
