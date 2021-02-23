@@ -6,7 +6,7 @@
             "id": "de9840af-6e0b-463a-ad16-105dfa576414",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "LeftThumbstick",
                     "type": "Value",
                     "id": "dca11024-3d86-4dd9-87f2-9d3fe0a6576f",
                     "expectedControlType": "Vector2",
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Use",
+                    "name": "RightIndex",
                     "type": "Button",
                     "id": "e6a4aadc-3f77-4f67-a174-5bac41dd0611",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Rotate",
+                    "name": "RightThumbstick",
                     "type": "Value",
                     "id": "bb712a39-974d-4940-8bd5-2f12fd123221",
                     "expectedControlType": "Vector2",
@@ -30,9 +30,33 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "RightThumbstickPress",
                     "type": "Button",
                     "id": "c3b0894d-d657-4981-b281-44b3b3f5ac17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftGrip",
+                    "type": "Button",
+                    "id": "01a18926-62a5-4cc3-a287-2878a246f6e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftIndex",
+                    "type": "Button",
+                    "id": "f7f45631-fb5d-4d51-a766-ea592fddfc40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightGrip",
+                    "type": "Button",
+                    "id": "bd57e4d0-33af-419a-a08a-28875d11e3d4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -46,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Use",
+                    "action": "RightIndex",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -57,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "LeftThumbstick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -68,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "RightThumbstick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -79,7 +103,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "RightThumbstickPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8b93783-a95d-4714-9ad5-1669814d258a",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftGrip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3bbd59c-75fd-4508-bd88-dff4a678af04",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftIndex",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9a7bda2-3b57-4b4a-a762-ed8277f7126c",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGrip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

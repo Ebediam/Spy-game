@@ -9,27 +9,18 @@ public class Player : MonoBehaviour
     public CapsuleCollider playerCollider;
     public Camera playerCamera;
 
-    public VRInput controls;
-
-
     public Rigidbody rb;
 
     public PlayerData playerData;
-    private void Awake()
-    {
-        controls = new VRInput();
 
-        controls.Player.Movement.performed += Move;
-        controls.Player.Use.performed += Use;
-        controls.Player.Rotate.performed += Rotate;
-        controls.Player.Jump.performed += Jump;
-    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        InputManager.LeftThumbstickEvent += Move;
+        InputManager.RightThumbstickEvent += Rotate;
+        InputManager.RightThumbstickPressEvent += Jump;
     }
 
     // Update is called once per frame
@@ -41,11 +32,8 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Move(InputAction.CallbackContext ctxt)
-    {
-        
-        Vector2 movement = ctxt.ReadValue<Vector2>();
-
+    private void Move(Vector2 movement)
+    {        
         rb.AddRelativeForce(new Vector3(movement.x, 0, movement.y) *playerData.acceleration* Time.deltaTime, ForceMode.Acceleration);
 
         if(Mathf.Abs(rb.velocity.x) > playerData.maxSpeed)
@@ -60,32 +48,23 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Rotate(InputAction.CallbackContext ctxt)
+    private void Rotate(Vector2 rotation)
     {
-        Vector2 rotate = ctxt.ReadValue<Vector2>();
-
-        transform.Rotate(transform.up, rotate.x * playerData.angularSpeed * Time.deltaTime);
-
+        transform.Rotate(transform.up, rotation.x * playerData.angularSpeed * Time.deltaTime);
     }
 
-    public void Use(InputAction.CallbackContext ctxt)
+    private void Jump(bool value)
     {
-        Debug.Log("Use pressed");
+        if (value)
+        {
+            Jump();
+        }
     }
 
-    public void Jump(InputAction.CallbackContext ctxt)
+    public void Jump()
     {
         rb.AddForce(transform.up*playerData.jumpForce, ForceMode.VelocityChange);
     }
 
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
 
 }

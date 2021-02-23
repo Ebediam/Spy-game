@@ -19,7 +19,7 @@ public class @VRInput : IInputActionCollection, IDisposable
             ""id"": ""de9840af-6e0b-463a-ad16-105dfa576414"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""LeftThumbstick"",
                     ""type"": ""Value"",
                     ""id"": ""dca11024-3d86-4dd9-87f2-9d3fe0a6576f"",
                     ""expectedControlType"": ""Vector2"",
@@ -27,7 +27,7 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Use"",
+                    ""name"": ""RightIndex"",
                     ""type"": ""Button"",
                     ""id"": ""e6a4aadc-3f77-4f67-a174-5bac41dd0611"",
                     ""expectedControlType"": ""Button"",
@@ -35,7 +35,7 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Rotate"",
+                    ""name"": ""RightThumbstick"",
                     ""type"": ""Value"",
                     ""id"": ""bb712a39-974d-4940-8bd5-2f12fd123221"",
                     ""expectedControlType"": ""Vector2"",
@@ -43,9 +43,33 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""RightThumbstickPress"",
                     ""type"": ""Button"",
                     ""id"": ""c3b0894d-d657-4981-b281-44b3b3f5ac17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftGrip"",
+                    ""type"": ""Button"",
+                    ""id"": ""01a18926-62a5-4cc3-a287-2878a246f6e0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftIndex"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7f45631-fb5d-4d51-a766-ea592fddfc40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightGrip"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd57e4d0-33af-419a-a08a-28875d11e3d4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -59,7 +83,7 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Use"",
+                    ""action"": ""RightIndex"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -70,7 +94,7 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""LeftThumbstick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -81,7 +105,7 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""RightThumbstick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -92,7 +116,40 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""RightThumbstickPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8b93783-a95d-4714-9ad5-1669814d258a"",
+                    ""path"": ""<XRController>{LeftHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftGrip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3bbd59c-75fd-4508-bd88-dff4a678af04"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftIndex"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9a7bda2-3b57-4b4a-a762-ed8277f7126c"",
+                    ""path"": ""<XRController>{RightHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightGrip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -149,10 +206,13 @@ public class @VRInput : IInputActionCollection, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
-        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_LeftThumbstick = m_Player.FindAction("LeftThumbstick", throwIfNotFound: true);
+        m_Player_RightIndex = m_Player.FindAction("RightIndex", throwIfNotFound: true);
+        m_Player_RightThumbstick = m_Player.FindAction("RightThumbstick", throwIfNotFound: true);
+        m_Player_RightThumbstickPress = m_Player.FindAction("RightThumbstickPress", throwIfNotFound: true);
+        m_Player_LeftGrip = m_Player.FindAction("LeftGrip", throwIfNotFound: true);
+        m_Player_LeftIndex = m_Player.FindAction("LeftIndex", throwIfNotFound: true);
+        m_Player_RightGrip = m_Player.FindAction("RightGrip", throwIfNotFound: true);
         // Hacker
         m_Hacker = asset.FindActionMap("Hacker", throwIfNotFound: true);
         m_Hacker_Click = m_Hacker.FindAction("Click", throwIfNotFound: true);
@@ -206,18 +266,24 @@ public class @VRInput : IInputActionCollection, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Use;
-    private readonly InputAction m_Player_Rotate;
-    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_LeftThumbstick;
+    private readonly InputAction m_Player_RightIndex;
+    private readonly InputAction m_Player_RightThumbstick;
+    private readonly InputAction m_Player_RightThumbstickPress;
+    private readonly InputAction m_Player_LeftGrip;
+    private readonly InputAction m_Player_LeftIndex;
+    private readonly InputAction m_Player_RightGrip;
     public struct PlayerActions
     {
         private @VRInput m_Wrapper;
         public PlayerActions(@VRInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Use => m_Wrapper.m_Player_Use;
-        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @LeftThumbstick => m_Wrapper.m_Player_LeftThumbstick;
+        public InputAction @RightIndex => m_Wrapper.m_Player_RightIndex;
+        public InputAction @RightThumbstick => m_Wrapper.m_Player_RightThumbstick;
+        public InputAction @RightThumbstickPress => m_Wrapper.m_Player_RightThumbstickPress;
+        public InputAction @LeftGrip => m_Wrapper.m_Player_LeftGrip;
+        public InputAction @LeftIndex => m_Wrapper.m_Player_LeftIndex;
+        public InputAction @RightGrip => m_Wrapper.m_Player_RightGrip;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -227,34 +293,52 @@ public class @VRInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
-                @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
-                @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
-                @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @LeftThumbstick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftThumbstick;
+                @LeftThumbstick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftThumbstick;
+                @LeftThumbstick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftThumbstick;
+                @RightIndex.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightIndex;
+                @RightIndex.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightIndex;
+                @RightIndex.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightIndex;
+                @RightThumbstick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstick;
+                @RightThumbstick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstick;
+                @RightThumbstick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstick;
+                @RightThumbstickPress.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstickPress;
+                @RightThumbstickPress.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstickPress;
+                @RightThumbstickPress.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightThumbstickPress;
+                @LeftGrip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftGrip;
+                @LeftGrip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftGrip;
+                @LeftGrip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftGrip;
+                @LeftIndex.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftIndex;
+                @LeftIndex.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftIndex;
+                @LeftIndex.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftIndex;
+                @RightGrip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightGrip;
+                @RightGrip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightGrip;
+                @RightGrip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightGrip;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
-                @Use.started += instance.OnUse;
-                @Use.performed += instance.OnUse;
-                @Use.canceled += instance.OnUse;
-                @Rotate.started += instance.OnRotate;
-                @Rotate.performed += instance.OnRotate;
-                @Rotate.canceled += instance.OnRotate;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @LeftThumbstick.started += instance.OnLeftThumbstick;
+                @LeftThumbstick.performed += instance.OnLeftThumbstick;
+                @LeftThumbstick.canceled += instance.OnLeftThumbstick;
+                @RightIndex.started += instance.OnRightIndex;
+                @RightIndex.performed += instance.OnRightIndex;
+                @RightIndex.canceled += instance.OnRightIndex;
+                @RightThumbstick.started += instance.OnRightThumbstick;
+                @RightThumbstick.performed += instance.OnRightThumbstick;
+                @RightThumbstick.canceled += instance.OnRightThumbstick;
+                @RightThumbstickPress.started += instance.OnRightThumbstickPress;
+                @RightThumbstickPress.performed += instance.OnRightThumbstickPress;
+                @RightThumbstickPress.canceled += instance.OnRightThumbstickPress;
+                @LeftGrip.started += instance.OnLeftGrip;
+                @LeftGrip.performed += instance.OnLeftGrip;
+                @LeftGrip.canceled += instance.OnLeftGrip;
+                @LeftIndex.started += instance.OnLeftIndex;
+                @LeftIndex.performed += instance.OnLeftIndex;
+                @LeftIndex.canceled += instance.OnLeftIndex;
+                @RightGrip.started += instance.OnRightGrip;
+                @RightGrip.performed += instance.OnRightGrip;
+                @RightGrip.canceled += instance.OnRightGrip;
             }
         }
     }
@@ -302,10 +386,13 @@ public class @VRInput : IInputActionCollection, IDisposable
     public HackerActions @Hacker => new HackerActions(this);
     public interface IPlayerActions
     {
-        void OnMovement(InputAction.CallbackContext context);
-        void OnUse(InputAction.CallbackContext context);
-        void OnRotate(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnLeftThumbstick(InputAction.CallbackContext context);
+        void OnRightIndex(InputAction.CallbackContext context);
+        void OnRightThumbstick(InputAction.CallbackContext context);
+        void OnRightThumbstickPress(InputAction.CallbackContext context);
+        void OnLeftGrip(InputAction.CallbackContext context);
+        void OnLeftIndex(InputAction.CallbackContext context);
+        void OnRightGrip(InputAction.CallbackContext context);
     }
     public interface IHackerActions
     {
