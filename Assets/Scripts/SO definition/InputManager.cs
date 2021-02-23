@@ -33,7 +33,8 @@ public class InputManager : ScriptableObject
 
 
     private void OnEnable()
-    {       
+    {
+        Debug.Log("InputManager enabled");
         controls = new VRInput();
 
         controls.Enable();
