@@ -10,6 +10,9 @@ public class Patrol : MonoBehaviour
         Reverse
     }
 
+    public VoidEventChannel stopPatrolEvent;
+    public BoolEventChannel switchPatrolEvent;
+
     public PathType pathType;
 
     public List<Transform> path;
@@ -23,23 +26,49 @@ public class Patrol : MonoBehaviour
     private int step;
     private bool reversing = false;
 
+    private bool isPatrolling = true;
+
     // Start is called before the first frame update
     void Start()
     {
         unit.transform.position = path[0].position;
         step = 1;
+
+        stopPatrolEvent.RaisedEvent += StopPatrolling;
+        switchPatrolEvent.RaisedEvent += ChangePatrolState;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveTowardsStep();
-
-        if(Vector3.Magnitude(unit.transform.position - path[step].position) < reachThreshold)
+        if (isPatrolling)
         {
-            ChangeStep();
+            MoveTowardsStep();
+
+            if (Vector3.Magnitude(unit.transform.position - path[step].position) < reachThreshold)
+            {
+                ChangeStep();
+            }
+
         }
 
+
+    }
+
+    public void StopPatrolling()
+    {
+        isPatrolling = false;
+    }
+
+    public void SwitchPatrolState()
+    {
+        isPatrolling = !isPatrolling;
+    }
+
+    public void ChangePatrolState(bool patrol)
+    {
+        isPatrolling = patrol;
     }
 
     void MoveTowardsStep()

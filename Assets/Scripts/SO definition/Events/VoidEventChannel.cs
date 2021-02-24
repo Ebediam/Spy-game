@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Events/VoidEvent")]
 public class VoidEventChannel : ScriptableObject
 {
 

@@ -6,11 +6,10 @@ public class GameManager : MonoBehaviour
 {
 
     public InputManager inputManager;
+    public ColoredMaterialData colorData;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()

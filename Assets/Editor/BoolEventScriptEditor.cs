@@ -14,12 +14,12 @@ public class BoolEventScriptEditor : Editor
 
         if (GUILayout.Button("Raise True Event"))
         {
-            myChannel.Raise(true);
+            myChannel.RaiseEvent(true);
         }
 
         if(GUILayout.Button("Raise False Event"))
         {
-            myChannel.Raise(false);
+            myChannel.RaiseEvent(false);
         }
 
     }

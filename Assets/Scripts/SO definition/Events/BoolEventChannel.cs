@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Events/BoolEvent")]
 public class BoolEventChannel : ScriptableObject
 {
 
     public delegate void BoolEventDelegate(bool b);
-    public BoolEventDelegate RaisedBoolEvent;
+    public BoolEventDelegate RaisedEvent;
 
 
-    public void Raise(bool state)
+    public void RaiseEvent(bool state)
     {
-        RaisedBoolEvent?.Invoke(state);
+        RaisedEvent?.Invoke(state);
     }
+
+    
 
 }

@@ -18,7 +18,7 @@ public class Door : MonoBehaviour
     public Transform openPosition;
     public Transform closedPosition;
     public GameObject doorObject;
-
+    public MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +65,8 @@ public class Door : MonoBehaviour
         StopCoroutine("MoveDoor");
         StartCoroutine("MoveDoor", openPosition.position);
         currentState = State.Open;
+
+        meshRenderer.material = ColoredMaterialData.green;
     }
 
     public void CloseDoor()
@@ -75,6 +77,9 @@ public class Door : MonoBehaviour
         StartCoroutine("MoveDoor", closedPosition.position);
 
         currentState = State.Closed;
+
+        meshRenderer.material = ColoredMaterialData.red;
+
     }
 
 
