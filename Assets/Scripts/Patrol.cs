@@ -10,10 +10,17 @@ public class Patrol : MonoBehaviour
         Reverse
     }
 
+    [Header("Event Inputs")]
     public VoidEventChannel stopPatrolEvent;
-    public BoolEventChannel switchPatrolEvent;
+    public BoolEventChannel boolPatrolEvent;
+    public VoidEventChannel switchPatrolEvent;
+
+    [Header("Event Outputs")]
+    public BoolEventChannel patrolResponse;
 
     public PathType pathType;
+
+    [Header("Settings")]
 
     public List<Transform> path;
 
@@ -37,7 +44,8 @@ public class Patrol : MonoBehaviour
         step = 1;
 
         stopPatrolEvent.RaisedEvent += StopPatrolling;
-        switchPatrolEvent.RaisedEvent += ChangePatrolState;
+        boolPatrolEvent.RaisedEvent += ChangePatrolState;
+        switchPatrolEvent.RaisedEvent += SwitchPatrolState;
         animator.SetBool("isMoving", isPatrolling);
 
     }
@@ -64,18 +72,21 @@ public class Patrol : MonoBehaviour
     {
         isPatrolling = false;
         animator.SetBool("isMoving", false);
+        patrolResponse.RaiseEvent(false);
     }
 
     public void SwitchPatrolState()
     {
         isPatrolling = !isPatrolling;
-
+        patrolResponse.RaiseEvent(isPatrolling);
         animator.SetBool("isMoving", isPatrolling);
     }
 
     public void ChangePatrolState(bool patrol)
     {
         isPatrolling = patrol;
+        patrolResponse.RaiseEvent(isPatrolling);
+        animator.SetBool("isMoving", isPatrolling);
     }
 
     void MoveTowardsStep()

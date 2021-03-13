@@ -174,6 +174,14 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""8da8a226-2fe0-4f7a-bd02-178c39d22a26"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -198,6 +206,116 @@ public class @VRInput : IInputActionCollection, IDisposable
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""04894ea0-45d7-410f-adfa-aef66a483e91"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""619fc6a0-7a7c-4b44-90da-a6e37d77ee69"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d19558f9-5ddb-4886-aefd-c115fb246e9f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""84bc874b-421e-4819-be2e-76d5f2407de6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4df12634-293a-401b-b3ed-acc5353c6930"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""38472ce0-3948-49bf-915f-1c019f5b510d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""dd5cf2f5-b231-4bae-8b25-fcbb4eb9dc6e"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1a6bb410-2351-410f-a159-2adac178769a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ba3125a0-c3c8-47e5-b0f3-74ee6eca7780"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0cd11adc-d245-4ec8-a892-d4ea9165d409"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -217,6 +335,7 @@ public class @VRInput : IInputActionCollection, IDisposable
         m_Hacker = asset.FindActionMap("Hacker", throwIfNotFound: true);
         m_Hacker_Click = m_Hacker.FindAction("Click", throwIfNotFound: true);
         m_Hacker_Point = m_Hacker.FindAction("Point", throwIfNotFound: true);
+        m_Hacker_CameraMovement = m_Hacker.FindAction("CameraMovement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -349,12 +468,14 @@ public class @VRInput : IInputActionCollection, IDisposable
     private IHackerActions m_HackerActionsCallbackInterface;
     private readonly InputAction m_Hacker_Click;
     private readonly InputAction m_Hacker_Point;
+    private readonly InputAction m_Hacker_CameraMovement;
     public struct HackerActions
     {
         private @VRInput m_Wrapper;
         public HackerActions(@VRInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click => m_Wrapper.m_Hacker_Click;
         public InputAction @Point => m_Wrapper.m_Hacker_Point;
+        public InputAction @CameraMovement => m_Wrapper.m_Hacker_CameraMovement;
         public InputActionMap Get() { return m_Wrapper.m_Hacker; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -370,6 +491,9 @@ public class @VRInput : IInputActionCollection, IDisposable
                 @Point.started -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
                 @Point.performed -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
                 @Point.canceled -= m_Wrapper.m_HackerActionsCallbackInterface.OnPoint;
+                @CameraMovement.started -= m_Wrapper.m_HackerActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.performed -= m_Wrapper.m_HackerActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.canceled -= m_Wrapper.m_HackerActionsCallbackInterface.OnCameraMovement;
             }
             m_Wrapper.m_HackerActionsCallbackInterface = instance;
             if (instance != null)
@@ -380,6 +504,9 @@ public class @VRInput : IInputActionCollection, IDisposable
                 @Point.started += instance.OnPoint;
                 @Point.performed += instance.OnPoint;
                 @Point.canceled += instance.OnPoint;
+                @CameraMovement.started += instance.OnCameraMovement;
+                @CameraMovement.performed += instance.OnCameraMovement;
+                @CameraMovement.canceled += instance.OnCameraMovement;
             }
         }
     }
@@ -398,5 +525,6 @@ public class @VRInput : IInputActionCollection, IDisposable
     {
         void OnClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+        void OnCameraMovement(InputAction.CallbackContext context);
     }
 }

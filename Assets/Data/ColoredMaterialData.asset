@@ -16,3 +16,5 @@ MonoBehaviour:
   _green: {fileID: 2100000, guid: 90237dea806430044bc33867339e91d6, type: 2}
   _yellow: {fileID: 2100000, guid: 5e62c9019b4a56447bdeea74a05b6d6c, type: 2}
   _black: {fileID: 2100000, guid: c2ada98f7b757754080600cac856bec4, type: 2}
+  _orange: {fileID: 2100000, guid: 62696fc84463e4e40aea0704365de719, type: 2}
+  _grey: {fileID: 2100000, guid: 36485c1d17f84ab41bcb5085783b304a, type: 2}

@@ -26,8 +26,12 @@ public class InputManager : ScriptableObject
 
     public static InputBoolEvent RightThumbstickPressEvent;
 
+    public static InputVector2Event CameraMovementEvent;
+
+    public static InputVector2Event ClickEvent;
 
 
+    public static Vector2 mousePosition;
 
 
 
@@ -55,6 +59,11 @@ public class InputManager : ScriptableObject
         controls.Player.RightThumbstick.canceled += RightThumbstickCancel;
         controls.Player.RightThumbstickPress.canceled += RightThumbstickPressCancel;
 
+        controls.Hacker.CameraMovement.performed += CameraMovement;
+        controls.Hacker.CameraMovement.canceled += CameraMovementStop;
+
+        controls.Hacker.Click.performed += Click;
+        controls.Hacker.Point.performed += MousePosition;
 
     }
 
@@ -77,6 +86,11 @@ public class InputManager : ScriptableObject
         controls.Player.LeftThumbstick.canceled -= LeftThumbstickCancel;
         controls.Player.RightThumbstick.canceled -= RightThumbstickCancel;
         controls.Player.RightThumbstickPress.canceled -= RightThumbstickPressCancel;
+
+        controls.Hacker.CameraMovement.performed -= CameraMovement;
+        controls.Hacker.CameraMovement.canceled -= CameraMovementStop;
+
+        controls.Hacker.Click.performed -= Click;
 
 
     }
@@ -160,5 +174,26 @@ public class InputManager : ScriptableObject
         RightThumbstickPressEvent?.Invoke(false);
     }
 
+    private void CameraMovement(InputAction.CallbackContext ctxt)
+    {
+        Vector2 value = ctxt.ReadValue<Vector2>();
+        CameraMovementEvent?.Invoke(value);
 
+    }
+
+    private void CameraMovementStop(InputAction.CallbackContext ctxt)
+    {
+        CameraMovementEvent?.Invoke(Vector2.zero);
+    }
+
+    private void Click(InputAction.CallbackContext ctxt)
+    {
+        ClickEvent?.Invoke(mousePosition);
+    }
+
+    private void MousePosition(InputAction.CallbackContext ctxt)
+    {
+        mousePosition = ctxt.ReadValue<Vector2>();
+
+    }
 }

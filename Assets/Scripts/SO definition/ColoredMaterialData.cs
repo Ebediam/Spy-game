@@ -10,11 +10,16 @@ public class ColoredMaterialData : ScriptableObject
     public Material _green;
     public Material _yellow;
     public Material _black;
+    public Material _orange;
+    public Material _grey;
 
     public static Material red;
     public static Material green;
     public static Material yellow;
     public static Material black;
+    public static Material orange;
+    public static Material grey;
+
 
     private void OnEnable()
     {
@@ -22,5 +27,7 @@ public class ColoredMaterialData : ScriptableObject
         green = _green;
         yellow = _yellow;
         black = _black;
+        orange = _orange;
+        grey = _grey;
     }
 }

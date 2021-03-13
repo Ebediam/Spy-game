@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public PlayerData playerData;
 
+    public bool onGround = true;
+
 
 
     // Start is called before the first frame update
@@ -55,6 +57,11 @@ public class Player : MonoBehaviour
 
     private void Jump(bool value)
     {
+        if (!onGround)
+        {
+            return;
+        }
+
         if (value)
         {
             Jump();
@@ -64,6 +71,7 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(transform.up*playerData.jumpForce, ForceMode.VelocityChange);
+        onGround = false;
     }
 
 
