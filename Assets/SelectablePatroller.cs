@@ -9,10 +9,10 @@ public class SelectablePatroller : SelectableFromScreen
 
 
     [Header("Event Outputs")]
-    public VoidEventChannel onSelect;
+    public VoidEventChannel OnSelect;
 
     [Header("Settings")]
-    public MeshRenderer iconRenderer;
+    public MeshRenderer meshRenderer;
 
     public void Start()
     {
@@ -22,18 +22,18 @@ public class SelectablePatroller : SelectableFromScreen
     public override void Selected()
     {
         base.Selected();
-        onSelect.RaiseEvent();
+        OnSelect.RaiseEvent();
     }
 
     public void OnEnemyPatrolStateChange(bool state)
     {
         if (state)
         {
-            iconRenderer.material = ColoredMaterialData.red;
+            meshRenderer.material = ColoredMaterialData.red;
         }
         else
         {
-            iconRenderer.material = ColoredMaterialData.grey;
+            meshRenderer.material = ColoredMaterialData.grey;
         }
     }
 

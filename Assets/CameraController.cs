@@ -23,15 +23,18 @@ public class CameraController : MonoBehaviour
         if (direction != Vector2.zero)
         {
             transform.position += (transform.right * direction.x + transform.up * direction.y) * speed * Time.deltaTime;
+            
         }
         
     }
 
     void OnClick(Vector2 screenPosition)
     {
-        Debug.Log("Mouse position :" + screenPosition);
-
+        return;
+        /*
         Ray ray = hackerCamera.ScreenPointToRay(new Vector3(screenPosition.x, screenPosition.y, 0f));
+
+        
 
         RaycastHit hitInfo;
         if(Physics.Raycast(ray, out hitInfo))
@@ -48,12 +51,14 @@ public class CameraController : MonoBehaviour
                 Debug.Log("Nothing selected");
             }
         }
+        */
         
     }
 
     void MoveCamera(Vector2 _direction)
     {
-        direction = _direction;
-        Debug.Log(direction);
+        return;
+        //direction = _direction;
+
     }
 }

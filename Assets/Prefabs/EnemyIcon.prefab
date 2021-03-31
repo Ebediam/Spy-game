@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPatrolStateChange: {fileID: 11400000, guid: c063ae58d0c19dd499fe67f673e7bb20, type: 2}
-  onSelect: {fileID: 11400000, guid: 16328b46dda4a3d47bff0129f7b7925c, type: 2}
-  iconRenderer: {fileID: 2866770883578735157}
+  OnSelect: {fileID: 0}
+  meshRenderer: {fileID: 2866770883578735157}
 --- !u!1001 &433742305462952948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2435364079107803750, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
       propertyPath: m_Name
-      value: Arrow
+      value: EnemyIcon
       objectReference: {fileID: 0}
     - target: {fileID: 2435364079107803751, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
       propertyPath: m_RootOrder
