@@ -3,7 +3,12 @@ guid: f4d4022a7d8f8ad4990d10082904e780
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - icon: {instanceID: 0}
+  - contextualMenu: {instanceID: 0}
+  - NewSelected: {fileID: 11400000, guid: 30e771cf03629d045aa41f978abb8862, type: 2}
+  - EnemyPatrolStateChange: {instanceID: 0}
+  - OnLockButtonEvent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

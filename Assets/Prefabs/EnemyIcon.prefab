@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2269293635978466262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2866770884395936146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4022a7d8f8ad4990d10082904e780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyPatrolStateChange: {fileID: 11400000, guid: c063ae58d0c19dd499fe67f673e7bb20, type: 2}
-  OnSelect: {fileID: 0}
-  meshRenderer: {fileID: 2866770883578735157}
 --- !u!1001 &433742305462952948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,13 +74,3 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2435364079360608735, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
---- !u!1 &2866770884395936146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2435364079107803750, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
-  m_PrefabInstance: {fileID: 433742305462952948}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2866770883578735157 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2435364079360608705, guid: bc17b4efb241f87468dad8311acaf7f8, type: 3}
-  m_PrefabInstance: {fileID: 433742305462952948}
-  m_PrefabAsset: {fileID: 0}
